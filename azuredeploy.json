@@ -50,7 +50,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-02-01",
             "name": "[variables('appServicePlanName')]",
-            "location": "[resourceGroup().location)]",
+            "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic"
