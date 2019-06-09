@@ -42,19 +42,36 @@
         }
     },
     "variables": {
-        "appServicePlanResourceId": "[resourceId(parameters('servicePlanResourceGroup'), 'Microsoft.Web/serverFarms', parameters('servicePlanName'))]",
+        "appServicePlanName": "[concat(parameters('appName'), '-asp')]",
         "functionAppName": "[parameters('appName')]"
     },
     "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "name": "[variables('appServicePlanName')]",
+            "location": "[resourceGroup().location)]",
+            "sku": {
+                "name": "Y1",
+                "tier": "Dynamic"
+            },
+            "properties": {
+                "name": "[variables('appServicePlanName')]",
+                "computeMode": "Dynamic"
+            }
+        },
         {
             "apiVersion": "2015-08-01",
             "type": "Microsoft.Web/sites",
             "name": "[variables('functionAppName')]",
             "kind": "functionapp",
             "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+            ],
             "properties": {
                 "name": "[variables('functionAppName')]",
-                "serverFarmId": "[variables('appServicePlanResourceId')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "hostingEnvironment": "",
                 "clientAffinityEnabled": false,
                 "identity": {
