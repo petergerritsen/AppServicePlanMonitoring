@@ -71,7 +71,7 @@
             ],
             "properties": {
                 "name": "[variables('functionAppName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
                 "hostingEnvironment": "",
                 "clientAffinityEnabled": false,
                 "identity": {
