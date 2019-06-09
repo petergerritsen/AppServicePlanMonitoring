@@ -94,13 +94,13 @@
                 "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
             ],
+            "identity": {
+                "type": "SystemAssigned"
+            },
             "properties": {
                 "name": "[variables('functionAppName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
-                "clientAffinityEnabled": false,
-                "identity": {
-                    "type": "SystemAssigned"
-                },
+                "clientAffinityEnabled": false,  
                 "siteConfig": {
                     "appSettings": [
                         {
