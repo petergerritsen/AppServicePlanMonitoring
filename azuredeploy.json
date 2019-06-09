@@ -42,7 +42,7 @@
         }
     },
     "variables": {
-        "appServicePlanName": "[concat(parameters('appName'), '-asp')]",
+        "appServicePlanName": "[concat(parameters('appName'), 'serviceplan')]",
         "functionAppName": "[parameters('appName')]"
     },
     "resources": [
