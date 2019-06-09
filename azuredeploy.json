@@ -78,7 +78,6 @@
                     "type": "SystemAssigned"
                 },
                 "siteConfig": {
-                    "alwaysOn": true,
                     "cors": {
                         "allowedOrigins": [
                             "*"
