@@ -60,12 +60,15 @@ namespace CloudDev.Azure.Monitoring
                     telemetry.GetMetric("AppServicePlanStorageUsedPercentage", "ServicePlanName").TrackValue(percentageUsed, servicePlanName);
                     telemetry.GetMetric("AppServicePlanStorageUsed", "ServicePlanName").TrackValue(used, servicePlanName);
                     
-                    log.LogInformation($"Percentage used: {percentageUsed}");
+                    log.LogInformation($"Limit: {limit}");
+                    log.LogInformation($"Used: {used}");
+                    log.LogInformation($"Percentage used: {percentageUsed}%");
                 }
             }
             else
             {
                 log.LogError($"Error calling Resource Manager REST API: {result.StatusCode}");
+                throw new Exception("Error calling Resource Manager REST API");
             }
 
             
